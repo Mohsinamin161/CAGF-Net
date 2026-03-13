@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*.ipynb
+
+# Data
+data/raw/
+data/processed/
+*.npy
+*.nii
+*.nii.gz
+*.csv
+*.pth
+*.pt
+*.h5
+*.hdf5
+
+# Experiments
+experiments/checkpoints/
+experiments/logs/
+experiments/figures/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
