@@ -37,7 +37,7 @@ CAGF-Net/
 ├── data/
 │   ├── extracted_features/         # <-- PROVIDED FOR REPRODUCIBILITY
 │   │   ├── aligned_mri_dti_512.csv # Extracted 512-dim imaging features
-│   │   └── 512_genetic_features.csv# Extracted genomic features / Top 100 SNPs
+│   │   └── 512_genetic_features.csv# Extracted 512-dim genomic features 
 │   │
 │   └── metadata/                   # Anonymized clinical labels
 │
