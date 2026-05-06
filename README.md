@@ -36,10 +36,10 @@ CAGF-Net/
 │
 ├── data/
 │   ├── extracted_features/         # <-- PROVIDED FOR REPRODUCIBILITY
-│   │   ├── aligned_mri_dti_512.csv # Extracted 512-dim imaging features
-│   │   └── 512_genetic_features.csv# Extracted 512-dim genomic features 
-│   │
-│   └── metadata/                   # Anonymized clinical labels
+│      ├── aligned_mri_dti_512.csv # Extracted 512-dim imaging features
+│      └── 512_genetic_features.csv# Extracted 512-dim genomic features 
+│   
+│   
 │
 ├── scripts/
 │   ├── 1_genomic_preprocessing_cv.py           # Provided for transparency
@@ -61,13 +61,14 @@ CAGF-Net/
 Install the required dependencies via pip:
 ```text
 pip install torch torchvision numpy pandas scikit-learn imbalanced-learn xgboost
-
+```
 ## 2. Run the Pipeline
-The main script handles stratified 5-fold cross-validation, training of the SMOTified-GAN on training folds, and CAGF-Net optimization[cite: 13]:
+The main script handles stratified 5-fold cross-validation, training of the SMOTified-GAN on training folds, and CAGF-Net optimization:
 
 ```text
 
 python scripts/4_train_trimodal_Cagf-net_cv.py
+```
 ## Reproducibility Note
 Deep learning models involving cross-attention mechanisms may exhibit slight stochasticity during GPU execution due to non-deterministic CUDA atomic operations. While random seeds (e.g., 42) are fixed in the code, minor fluctuations (±0.5%) in final metrics are expected depending on hardware and library versions.
 
@@ -75,11 +76,13 @@ Deep learning models involving cross-attention mechanisms may exhibit slight sto
 Please note that this work is currently in the drafting/review stage. For citations, please use the following temporary format:
 
 ## Code snippet
+```text
 @article{amin2026cagfnet,
   title={CAGF-Net: An Explainable Cross-Attentive Gated Fusion Network with Latent-Space SMOTified-GAN for Early Parkinson’s Disease Diagnosis},
   author={Amin, Mohsin and Sabri, Aznul Qalid Md and Li, Shuotian and Samad, Abdul and Maqbool, Haseeba and Long, Guojun},
   journal={In Review},
   year={2026}
 }
+```
 ## Acknowledgments
 We acknowledge the Parkinson’s Progression Markers Initiative (PPMI) investigators and participants for making the data available. PPMI is sponsored by The Michael J. Fox Foundation.
