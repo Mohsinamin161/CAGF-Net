@@ -1,20 +1,43 @@
-# CAGF-Net: Cross-Attention and Gene Fusion Network for Early Parkinson's Disease Prediction
+# CAGF-Net: Cross-Attentive Gated Fusion Network for Early Parkinson’s Disease Diagnosis
 
-This repository contains the official implementation of **CAGF-Net**, a multi-modal deep learning framework that integrates 3D MRI and SNP data to classify early Parkinson's disease stages (HC, Prodromal, PD).
+> A novel, explainable multimodal deep learning framework for the multi-class staging of Parkinson's Disease (Healthy Control, Prodromal, and diagnosed PD) using structural MRI, DTI-derived microstructural features, and genomic (SNP) data.
 
-## Project Structure
-- `data/`: Data loading and preprocessing modules.
-- `models/`: Neural network architectures (MedicalNet, SNP Transformer, fusion models).
-- `training/`: Training loops and utilities.
-- `explainability/`: SHAP and Grad-CAM analysis.
-- `scripts/`: Executable pipelines.
-- `config/`: Configuration files.
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C.svg)](https://pytorch.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Setup
-1. Clone this repository.
-2. Install dependencies: `pip install -r requirements.txt`
-3. Prepare your data (see instructions in `data/`).
-4. Run the scripts in order (see `scripts/README.md`).
+## Overview
 
-## License
-MIT
+Early diagnosis of Parkinson's Disease (PD) remains a significant challenge due to delayed motor symptom onset, severe clinical data scarcity in the prodromal phase, and the inherent limitations of static multimodal fusion methods. 
+
+CAGF-Net addresses these limitations by dynamically integrating macroscale neuroanatomical decay with microscale genomic susceptibility. The fully balanced trimodal CAGF-Net framework achieves a **diagnostic accuracy of 96.9%** and an **AUC of 0.988** within a subject-wise 5-fold cross-validation on the Parkinson's Progression Markers Initiative (PPMI) cohort.
+
+### Key Features
+* **Multimodal Feature Extraction:** Utilizes a pre-trained 3D ResNet-18 to extract spatial features from co-registered structural MRI (sMRI) and diffusion tensor imaging (DTI), paired with a Transformer sequence encoder for single-nucleotide polymorphisms (SNPs).
+* **Latent-Space SMOTified-GAN:** Balances the training manifold by generating synthetic minority-class samples (HC and Prodromal) entirely within a joint 1024-dimensional latent space. This preserves cross-modal genotype-phenotype correlations while bypassing the prohibitive computational cost of 3D volume synthesis.
+* **Cross-Attentive Gated Fusion:** Employs bi-directional cross-attention and adaptive gating mechanisms, regularized by a cross-modal contrastive alignment loss, to dynamically assign modality-specific trust weights and effectively model non-linear interactions.
+* **Dual-Pathway Explainable AI (XAI):** Integrates SHAP to isolate top predictive genetic loci and 3D Grad-CAM to visualize stage-specific neuroanatomical attention (e.g., basal ganglia and midbrain), ensuring clinical interpretability.
+
+---
+
+## Data Availability & Privacy Notice
+
+**Please Note:** Due to strict data privacy regulations and the Data Use Agreement of the Parkinson's Progression Markers Initiative (PPMI), raw neuroimaging NIfTI files and raw genomic PLINK files cannot be shared publicly. 
+
+To ensure full reproducibility of our predictive models without compromising patient privacy, we provide the **extracted, anonymized 1D feature vectors** in the `data/extracted_features/` directory. Researchers can run the core CAGF-Net training and evaluation pipeline directly using these features.
+
+*To obtain the raw data, researchers must register and apply for access directly through the [PPMI Data Portal](https://www.ppmi-info.org).*
+
+---
+
+## Execution Pipeline
+
+### A. Preprocessing (Provided for Methodological Transparency)
+Scripts `1`, `2a`, and `2b` contain the exact code used to process the raw PPMI data (GWAS filtering, LD pruning, SyN+Affine MRI/DTI co-registration, and FreeSurfer brain extraction). These are provided for transparency and review purposes. You do not need to run these unless you have independently downloaded the raw PPMI data.
+
+### B. Core Model Training & Evaluation (Reproducible Step)
+You can directly reproduce our 5-Fold Cross-Validation results using the provided extracted feature vectors. 
+
+This script automatically applies the latent-space SMOTified-GAN *strictly* to the training folds to prevent data leakage and optimizes the network using the dual-loss formulation (Cross-Entropy + Contrastive Alignment).
+```bash
+python scripts/4_train_trimodal_Cagf-net_cv.py
