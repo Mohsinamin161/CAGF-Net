@@ -1,0 +1,15 @@
+torch>=2.0.0
+torchvision
+numpy
+pandas
+scikit-learn
+imbalanced-learn
+xgboost
+shap
+matplotlib
+seaborn
+bed-reader
+antspyx
+SimpleITK
+dipy
+nibabel
