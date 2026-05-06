@@ -31,7 +31,7 @@ To ensure full reproducibility of our predictive models without compromising pat
 
 
 ## Repository Structure
-
+```text
 CAGF-Net/
 │
 ├── data/
@@ -56,29 +56,30 @@ CAGF-Net/
 └── README.md                       # Project documentation
 
 
-Quick Start: Reproducing Results
+## Quick Start: Reproducing Results
 1. Installation
 Install the required dependencies via pip:
-
-Bash
+```text
 pip install torch torchvision numpy pandas scikit-learn imbalanced-learn xgboost
-2. Run the Pipeline
+
+## 2. Run the Pipeline
 The main script handles stratified 5-fold cross-validation, training of the SMOTified-GAN on training folds, and CAGF-Net optimization[cite: 13]:
 
-Bash
+```text
+
 python scripts/4_train_trimodal_Cagf-net_cv.py
-Reproducibility Note
+## Reproducibility Note
 Deep learning models involving cross-attention mechanisms may exhibit slight stochasticity during GPU execution due to non-deterministic CUDA atomic operations. While random seeds (e.g., 42) are fixed in the code, minor fluctuations (±0.5%) in final metrics are expected depending on hardware and library versions.
 
-Citation
+## Citation
 Please note that this work is currently in the drafting/review stage. For citations, please use the following temporary format:
 
-Code snippet
+## Code snippet
 @article{amin2026cagfnet,
   title={CAGF-Net: An Explainable Cross-Attentive Gated Fusion Network with Latent-Space SMOTified-GAN for Early Parkinson’s Disease Diagnosis},
   author={Amin, Mohsin and Sabri, Aznul Qalid Md and Li, Shuotian and Samad, Abdul and Maqbool, Haseeba and Long, Guojun},
   journal={In Review},
   year={2026}
 }
-Acknowledgments
+## Acknowledgments
 We acknowledge the Parkinson’s Progression Markers Initiative (PPMI) investigators and participants for making the data available. PPMI is sponsored by The Michael J. Fox Foundation.
