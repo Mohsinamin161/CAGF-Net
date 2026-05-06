@@ -62,7 +62,7 @@ The following visualizations demonstrate the explainability of **CAGF-Net** in i
 ### 1. Neuroimaging Interpretability (3D Grad-CAM)
 The model identifies significant neuroanatomical decay in the basal ganglia and midbrain regions, aligned with clinical expectations for PD staging.
 
-![Grad-CAM Result](results/xai_plots/Fig 11.png)
+![Grad-CAM Result](results/Fig_11.png)
 
 ### 2. Genomic Interpretability (SHAP)
 SHAP analysis isolates the top predictive SNPs, highlighting the genetic loci most influential in the transition from HC to Prodromal stages.
