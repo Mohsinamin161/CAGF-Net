@@ -28,10 +28,10 @@ To ensure full reproducibility of our predictive models without compromising pat
 
 *To obtain the raw data, researchers must register and apply for access directly through the [PPMI Data Portal](https://www.ppmi-info.org).*
 
----
+
 
 ## Repository Structure
-```text
+
 CAGF-Net/
 │
 ├── data/
@@ -54,7 +54,6 @@ CAGF-Net/
 │   └── xai_plots/                  # Pre-saved SHAP and Grad-CAM PNGs
 │
 └── README.md                       # Project documentation
----
 
 
 Quick Start: Reproducing Results
