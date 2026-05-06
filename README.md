@@ -30,14 +30,27 @@ To ensure full reproducibility of our predictive models without compromising pat
 
 ---
 
-## Execution Pipeline
-
-### A. Preprocessing (Provided for Methodological Transparency)
-Scripts `1`, `2a`, and `2b` contain the exact code used to process the raw PPMI data (GWAS filtering, LD pruning, SyN+Affine MRI/DTI co-registration, and FreeSurfer brain extraction). These are provided for transparency and review purposes. You do not need to run these unless you have independently downloaded the raw PPMI data.
-
-### B. Core Model Training & Evaluation (Reproducible Step)
-You can directly reproduce our 5-Fold Cross-Validation results using the provided extracted feature vectors. 
-
-This script automatically applies the latent-space SMOTified-GAN *strictly* to the training folds to prevent data leakage and optimizes the network using the dual-loss formulation (Cross-Entropy + Contrastive Alignment).
-```bash
-python scripts/4_train_trimodal_Cagf-net_cv.py
+## Repository Structure
+```text
+CAGF-Net/
+│
+├── data/
+│   ├── extracted_features/         # <-- PROVIDED FOR REPRODUCIBILITY
+│   │   ├── aligned_mri_dti_512.csv # Extracted 512-dim imaging features
+│   │   └── 512_genetic_features.csv# Extracted genomic features / Top 100 SNPs
+│   │
+│   └── metadata/                   # Anonymized clinical labels
+│
+├── scripts/
+│   ├── 1_genomic_preprocessing_cv.py           # Provided for transparency
+│   ├── 2a_neuroimaging_smri_baseline.py        # Provided for transparency
+│   ├── 2b_neuroimaging_early_fusion(smri+dti).py # Provided for transparency
+│   ├── 3_cagf_architectures.py                 # Core Architectures
+│   ├── 4_train_trimodal_Cagf-net_cv.py         # Main Execution Script
+│   ├── 5a_xai_shap_genomics.py                 # XAI Analysis
+│   └── 5b_xai_gradcam_imaging.py               # XAI Analysis
+│
+├── results/                        
+│   └── xai_plots/                  # Pre-saved SHAP and Grad-CAM PNGs
+│
+└── README.md                       # Project documentation
