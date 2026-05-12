@@ -46,7 +46,7 @@ CAGF-Net/
 │   ├── 2a_neuroimaging_smri_baseline.py        # Provided for transparency
 │   ├── 2b_neuroimaging_early_fusion(smri+dti).py # Provided for transparency
 │   ├── 3_cagf_architectures.py                 # Core Architectures
-│   ├── 4_train_trimodal_Cagf-net_cv.py         # Main Execution Script
+│   ├── 4_train_trimodal_cagf_net_cv.py         # Main Execution Script
 │   ├── 5a_xai_shap_genomics.py                 # XAI Analysis
 │   └── 5b_xai_gradcam_imaging.py               # XAI Analysis
 │
@@ -72,7 +72,11 @@ SHAP analysis isolates the top predictive SNPs, highlighting the genetic loci mo
 1. Installation
 Install the required dependencies via pip:
 ```text
+# Core execution dependencies
 pip install torch torchvision numpy pandas scikit-learn imbalanced-learn xgboost
+
+# Preprocessing & XAI dependencies
+pip install shap matplotlib scipy bed-reader antspyx SimpleITK dipy nibabel
 ```
 ## 2. Run the Pipeline
 The main script handles stratified 5-fold cross-validation, training of the SMOTified-GAN on training folds, and CAGF-Net optimization:
