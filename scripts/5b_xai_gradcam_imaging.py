@@ -107,21 +107,15 @@ for row_idx, sample_mri_path in enumerate(MRI_PATHS):
     if np.max(heatmap) > 0:
         heatmap /= np.max(heatmap)
 
-    # 4B. RESIZE TO ORIGINAL SHAPE
+   # 4B. RESIZE TO ORIGINAL SHAPE
     original_shape = (128, 128, 128)
     heatmap_resized = zoom(heatmap, (original_shape[0]/heatmap.shape[0],
                                      original_shape[1]/heatmap.shape[1],
                                      original_shape[2]/heatmap.shape[2]))
 
-    # Isolate Primary Hotspot
-    binary_mask = heatmap_resized > 0.05
-    labeled_map, num_labels = label(binary_mask)
-
-    if num_labels > 1:
-        max_coords = np.unravel_index(np.argmax(heatmap_resized), heatmap_resized.shape)
-        main_blob_label = labeled_map[max_coords]
-        heatmap_resized = np.where(labeled_map == main_blob_label, heatmap_resized, 0.0)
-
+    # Suppress near-zero background noise to clean the visual (Standard Practice)
+    heatmap_resized[heatmap_resized < 0.05] = 0.0
+    
     # 4C. AUTO-CENTER AND SLICE
     mri_3d = img_tensor.squeeze(0).cpu().numpy()
     if mri_3d.ndim == 4:
