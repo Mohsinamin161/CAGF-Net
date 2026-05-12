@@ -48,7 +48,7 @@ def forward_hook(module, input, output):
     global activations
     activations = output
 
-# Target the final convolution of Layer 3
+# Target the final convolution of Layer 4
 target_layer = net.model.layer4[-1].conv2[0]
 target_layer.register_forward_hook(forward_hook)
 target_layer.register_backward_hook(backward_hook)
