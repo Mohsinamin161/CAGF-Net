@@ -83,7 +83,7 @@ The main script handles stratified 5-fold cross-validation, training of the SMOT
 
 ```text
 
-python scripts/4_train_trimodal_cagf-net_cv.py
+python scripts/4_train_trimodal_cagf_net_cv.py
 ```
 ## Reproducibility Note
 Deep learning models involving cross-attention mechanisms may exhibit slight stochasticity during GPU execution due to non-deterministic CUDA atomic operations. While random seeds (e.g., 42) are fixed in the code, minor fluctuations (±0.5%) in final metrics are expected depending on hardware and library versions.
