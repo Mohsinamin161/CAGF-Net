@@ -93,7 +93,7 @@ Please note that this work is currently in the drafting/review stage. For citati
 ```text
 @article{amin2026cagfnet,
   title={CAGF-Net: An Explainable Cross-Attentive Gated Fusion Network with Latent-Space SMOTified-GAN for Early Parkinson’s Disease Diagnosis},
-  author={Amin, Mohsin and Sabri, Aznul Qalid Md and Li, Shuotian and Samad, Abdul and Maqbool, Haseeba and Long, Guojun},
+  author={Amin, Mohsin and Sabri, Aznul Qalid Md and Li, Shuotian and Samad, Abdul and Maqbool,Haseeba },
   journal={In Review},
   year={2026}
 }
