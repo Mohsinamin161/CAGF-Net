@@ -93,7 +93,8 @@ class CAGFNet(nn.Module):
         self.classifier = nn.Sequential(
             nn.Linear(feature_dim, 256), nn.BatchNorm1d(256), nn.GELU(), nn.Dropout(0.4),
             nn.Linear(256, 64), nn.GELU(), nn.Dropout(0.2),
-            nn.Linear(64, num_classes)
+            nn.Linear(64, num_classes),
+            nn.Softmax(dim=1)
         )
 
     def forward(self, x_img, x_gene):
