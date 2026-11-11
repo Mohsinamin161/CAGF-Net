@@ -24,8 +24,6 @@ CAGF-Net addresses these limitations by dynamically integrating macroscale neuro
 
 **Please Note:** Due to strict data privacy regulations and the Data Use Agreement of the Parkinson's Progression Markers Initiative (PPMI), raw neuroimaging NIfTI files and raw genomic PLINK files cannot be shared publicly. 
 
-To ensure full reproducibility of our predictive models without compromising patient privacy, we provide the **extracted, anonymized 1D feature vectors** in the `data/extracted_features/` directory. Researchers can run the core CAGF-Net training and evaluation pipeline directly using these features.
-
 *To obtain the raw data, researchers must register and apply for access directly through the [PPMI Data Portal](https://www.ppmi-info.org).*
 
 
@@ -35,7 +33,7 @@ To ensure full reproducibility of our predictive models without compromising pat
 CAGF-Net/
 │
 ├── data/
-│   ├── extracted_features/         # <-- PROVIDED FOR REPRODUCIBILITY
+│   ├── extracted_features/         
 │      ├── aligned_mri_dti_512.csv # Extracted 512-dim imaging features
 │      └── 512_genetic_features.csv# Extracted 512-dim genomic features 
 │   
