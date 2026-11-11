@@ -33,7 +33,7 @@ CAGF-Net addresses these limitations by dynamically integrating macroscale neuro
 CAGF-Net/
 │
 ├── data/
-│   ├── extracted_features/         
+│   ├── extracted_features/        # data files are removed due to data privacy regulations and the Data Use Agreement
 │      ├── aligned_mri_dti_512.csv # Extracted 512-dim imaging features
 │      └── 512_genetic_features.csv# Extracted 512-dim genomic features 
 │   
